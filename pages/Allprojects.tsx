@@ -45,10 +45,12 @@ const AllProjects: React.FC = () => {
     },
   ];
 
-  // Filter projects based on search term
-  const filteredProjects = projects.filter((project) =>
-    project.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+const filteredProjects = projects.filter((project) =>
+  project.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+  project.techStacks.some((tech) =>
+    tech.toLowerCase().includes(searchTerm.toLowerCase())
+  )
+);
 
   return (
     <div className="flex min-h-[730px]">
@@ -58,7 +60,6 @@ const AllProjects: React.FC = () => {
         <div className="flex flex-col w-full max-w-4xl mx-auto">
           <Heading label="All Projects" />
 
-          {/* Search Bar */}
           <div className="mt-4 mb-4 flex items-center bg-white rounded-full px-3 py-1 w-full">
             <FaSearch className="text-gray-500 text-lg mr-2" />
             <input
@@ -70,7 +71,6 @@ const AllProjects: React.FC = () => {
             />
           </div>
 
-          {/* Project List */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {filteredProjects.length > 0 ? (
               filteredProjects.map((project, index) => (
