@@ -67,7 +67,7 @@ const filteredProjects = projects.filter((project) =>
               placeholder="Search projects..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full p-1 rounded-md"
+              className="w-full p-1 rounded-md outline-none border-none"
             />
           </div>
 
